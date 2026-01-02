@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoW - Discord Bot</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div id="toastContainer" class="toast-container"></div>
+    
+    <nav>
+        <div class="nav-container">
+            <button class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" style="display: none;">
+                <a class="nav-link-item active-link" data-page="home" onclick="showPage('home')" style="margin-left: -10px;">Home</a>
+                <a class="nav-link-item" data-page="report" onclick="showPage('report')">Report</a>
+                <a class="nav-link-item" data-page="rules" onclick="showPage('rules')">Rules</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navigation Menu -->
+    <div id="navMenu" class="nav-menu">
+        <button class="close-menu" onclick="toggleMenu()">×</button>
+        <ul id="mobileNavLinks">
+            <li><a class="nav-link-item" data-page="home" onclick="showPage('home')">Home</a></li>
+            <li><a class="nav-link-item" data-page="report" onclick="showPage('report')">Report</a></li>
+            <li><a class="nav-link-item" data-page="rules" onclick="showPage('rules')">Rules</a></li>
+        </ul>
+    </div>
+
+    <style>
+        /* Responsive Navigation Overrides */
+        @media (max-width: 9999px) {
+            .nav-links {
+                display: none !important;
+            }
+            .hamburger {
+                display: flex !important;
+            }
+        }
+    </style>
+    
+    <!-- Home Page -->
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <main>
+            <section class="hero">
+                <div class="banner-container">
+                    <img src="attached_assets/af5dc8a0-257a-49d4-a193-490e36a26771(1)_1766864581439.png" alt="WoW Banner" class="banner-image">
+                    <div class="banner-overlay"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <div class="logo-section">
+                        <img src="attached_assets/d153e091b35aac4df4c3c9dc21e72081_1766864620526.png" alt="WoW Logo" class="large-logo">
+                    </div>
+                    <p class="subtitle">The best Economy bot you can trust</p>
+                    
+                    <div class="cta-buttons">
+                        <a class="button invite-btn" href="https://discord.com/oauth2/authorize?client_id=BOT_ID&scope=bot">
+                            <span>Invite Bot</span>
+                        </a>
+                        <a class="button server-btn" href="https://discord.gg/DEINSERVER">
+                            <span>Server Link</span>
+                        </a>
+                    </div>
+                    
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Report Page -->
+    <div id="reportPage" class="page">
+        <main class="report-page-main">
+            <div class="report-container">
+                <h2 style="color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.5); margin-bottom: 30px;">Report</h2>
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label for="discordUser">Your Discord Name *</label>
+                        <input type="text" id="discordUser" placeholder="e.g., user#1234" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reportContent">Description</label>
+                        <textarea id="reportContent" placeholder="Describe the issue..." required></textarea>
+                    </div>
+                    <button type="submit" class="button invite-btn">Submit</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Rules Page -->
+    <div id="rulesPage" class="page">
+        <main class="rules-page-main">
+            <div class="rules-container">
+                <h2 style="color: #4ade80; text-shadow: 0 0 10px rgba(74, 222, 128, 0.5); margin-bottom: 50px;">Server Rules</h2>
+                <div class="rules-list">
+                    <div class="rule-item"><div class="rule-number">1</div><div class="rule-content"><h3>Be Respectful</h3><p>No insults, harassment, or discrimination</p></div></div>
+                    <div class="rule-item"><div class="rule-number">2</div><div class="rule-content"><h3>No Spam</h3><p>Don't spam commands or messages</p></div></div>
+                    <div class="rule-item"><div class="rule-number">3</div><div class="rule-content"><h3>No Bug Abuse</h3><p>Don't exploit or abuse bugs</p></div></div>
+                    <div class="rule-item"><div class="rule-number">4</div><div class="rule-content"><h3>No Multi-Accounting</h3><p>No account sharing</p></div></div>
+                    <div class="rule-item"><div class="rule-number">5</div><div class="rule-content"><h3>No RMT</h3><p>No real money trading</p></div></div>
+                    <div class="rule-item"><div class="rule-number">6</div><div class="rule-content"><h3>No Scamming</h3><p>No fraud or scamming</p></div></div>
+                    <div class="rule-item"><div class="rule-number">7</div><div class="rule-content"><h3>No Automation</h3><p>Don't use bots or scripts</p></div></div>
+                    <div class="rule-item"><div class="rule-number">8</div><div class="rule-content"><h3>Follow Team</h3><p>Follow instructions from the team</p></div></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+            <a href="https://discord.com/users/1427640470774874183" target="_blank" class="credits" style="display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid rgba(46, 204, 113, 0.2); text-decoration: none; transition: all 0.3s ease;">
+                <img src="https://cdn.discordapp.com/avatars/1427640470774874183/d3cdda9540c47b0d53ed9cb62680be44.png?size=1024" alt="KURDO 09" style="width: 24px; height: 24px; border-radius: 50%;">
+                <span style="color: #fff; font-size: 0.9rem;">Made By <span style="color: #4ade80; font-weight: bold;">KURDO 09</span></span>
+            </a>
+            <style>
+                .credits:hover {
+                    background: rgba(46, 204, 113, 0.1) !important;
+                    border-color: rgba(46, 204, 113, 0.5) !important;
+                    transform: translateY(-2px);
+                }
+            </style>
+            <p style="margin: 0;">&copy; 2025 WoW. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                // Stats display logic removed or kept if containers exist
+            } catch (error) {
+                console.log('Stats error');
+            }
+        }
+
+        async function loadSupportInfo() {
+            try {
+                const response = await fetch('/api/support-info');
+                const info = await response.json();
+                
+                // Update bot links
+                const inviteBtn = document.querySelector('.invite-btn');
+                const serverBtn = document.querySelector('.server-btn');
+                if (inviteBtn && info.inviteUrl) inviteBtn.href = info.inviteUrl;
+                if (serverBtn && info.serverUrl) serverBtn.href = info.serverUrl;
+            } catch (error) {
+                console.log('Support info error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadSupportInfo();
+        });
+
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function showPage(pageName) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageName + 'Page').classList.add('active');
+            
+            // Update active link styling
+            document.querySelectorAll('.nav-link-item').forEach(link => {
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.add('active-link');
+                } else {
+                    link.classList.remove('active-link');
+                }
+            });
+
+            // Update hamburger color
+            const hamburgerSpans = document.querySelectorAll('.hamburger span');
+            hamburgerSpans.forEach(span => {
+                if (pageName !== 'home') {
+                    span.classList.add('active-link');
+                } else {
+                    span.classList.remove('active-link');
+                }
+            });
+            
+            // Close menu if it's open (mobile)
+            const menu = document.getElementById('navMenu');
+            if (menu) {
+                menu.classList.remove('active');
+            }
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icon = type === 'success' ? '✓' : '✕';
+            const color = type === 'success' ? '#4ade80' : '#ff4757';
+            
+            toast.innerHTML = `
+                <span style="color: ${color}; font-weight: bold; font-size: 1.2rem;">${icon}</span>
+                <span>${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease-in forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        document.getElementById('reportForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const discordUser = document.getElementById('discordUser').value;
+            const content = document.getElementById('reportContent').value;
+
+            try {
+                const response = await fetch('/api/report', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        discordUser: discordUser,
+                        content: content
+                    })
+                });
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showToast('Report submitted successfully!');
+                    this.reset();
+                } else {
+                    console.error('Submission Error:', result);
+                    showToast(result.error || 'Error submitting report', 'error');
+                }
+            } catch (error) {
+                console.error('Fetch Error:', error);
+                showToast('Connection error', 'error');
+            }
+        };
+    </script>
+</body>
+</html>
